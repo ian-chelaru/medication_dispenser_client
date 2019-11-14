@@ -1,0 +1,18 @@
+syntax = "proto3";
+option java_package = "grpc";
+
+message MedicationRequest {
+}
+
+message Medication {
+    string medicationName = 1;
+    string dailyInterval = 2;
+}
+
+message MedicationResponse {
+    repeated Medication medications = 1;
+}
+
+service MedicationService {
+    rpc getMedication (MedicationRequest) returns (MedicationResponse);
+}
