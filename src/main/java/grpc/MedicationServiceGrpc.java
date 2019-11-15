@@ -59,6 +59,70 @@ public final class MedicationServiceGrpc {
      return getGetMedicationMethod;
   }
 
+  private static volatile io.grpc.MethodDescriptor<grpc.MedicationServiceOuterClass.MedicationTaken,
+      grpc.MedicationServiceOuterClass.EmptyMessage> getTakenMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "taken",
+      requestType = grpc.MedicationServiceOuterClass.MedicationTaken.class,
+      responseType = grpc.MedicationServiceOuterClass.EmptyMessage.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<grpc.MedicationServiceOuterClass.MedicationTaken,
+      grpc.MedicationServiceOuterClass.EmptyMessage> getTakenMethod() {
+    io.grpc.MethodDescriptor<grpc.MedicationServiceOuterClass.MedicationTaken, grpc.MedicationServiceOuterClass.EmptyMessage> getTakenMethod;
+    if ((getTakenMethod = MedicationServiceGrpc.getTakenMethod) == null) {
+      synchronized (MedicationServiceGrpc.class) {
+        if ((getTakenMethod = MedicationServiceGrpc.getTakenMethod) == null) {
+          MedicationServiceGrpc.getTakenMethod = getTakenMethod = 
+              io.grpc.MethodDescriptor.<grpc.MedicationServiceOuterClass.MedicationTaken, grpc.MedicationServiceOuterClass.EmptyMessage>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(
+                  "MedicationService", "taken"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  grpc.MedicationServiceOuterClass.MedicationTaken.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  grpc.MedicationServiceOuterClass.EmptyMessage.getDefaultInstance()))
+                  .setSchemaDescriptor(new MedicationServiceMethodDescriptorSupplier("taken"))
+                  .build();
+          }
+        }
+     }
+     return getTakenMethod;
+  }
+
+  private static volatile io.grpc.MethodDescriptor<grpc.MedicationServiceOuterClass.MedicationNotTaken,
+      grpc.MedicationServiceOuterClass.EmptyMessage> getNotTakenMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "notTaken",
+      requestType = grpc.MedicationServiceOuterClass.MedicationNotTaken.class,
+      responseType = grpc.MedicationServiceOuterClass.EmptyMessage.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<grpc.MedicationServiceOuterClass.MedicationNotTaken,
+      grpc.MedicationServiceOuterClass.EmptyMessage> getNotTakenMethod() {
+    io.grpc.MethodDescriptor<grpc.MedicationServiceOuterClass.MedicationNotTaken, grpc.MedicationServiceOuterClass.EmptyMessage> getNotTakenMethod;
+    if ((getNotTakenMethod = MedicationServiceGrpc.getNotTakenMethod) == null) {
+      synchronized (MedicationServiceGrpc.class) {
+        if ((getNotTakenMethod = MedicationServiceGrpc.getNotTakenMethod) == null) {
+          MedicationServiceGrpc.getNotTakenMethod = getNotTakenMethod = 
+              io.grpc.MethodDescriptor.<grpc.MedicationServiceOuterClass.MedicationNotTaken, grpc.MedicationServiceOuterClass.EmptyMessage>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(
+                  "MedicationService", "notTaken"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  grpc.MedicationServiceOuterClass.MedicationNotTaken.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  grpc.MedicationServiceOuterClass.EmptyMessage.getDefaultInstance()))
+                  .setSchemaDescriptor(new MedicationServiceMethodDescriptorSupplier("notTaken"))
+                  .build();
+          }
+        }
+     }
+     return getNotTakenMethod;
+  }
+
   /**
    * Creates a new async stub that supports all call types for the service
    */
@@ -93,6 +157,20 @@ public final class MedicationServiceGrpc {
       asyncUnimplementedUnaryCall(getGetMedicationMethod(), responseObserver);
     }
 
+    /**
+     */
+    public void taken(grpc.MedicationServiceOuterClass.MedicationTaken request,
+        io.grpc.stub.StreamObserver<grpc.MedicationServiceOuterClass.EmptyMessage> responseObserver) {
+      asyncUnimplementedUnaryCall(getTakenMethod(), responseObserver);
+    }
+
+    /**
+     */
+    public void notTaken(grpc.MedicationServiceOuterClass.MedicationNotTaken request,
+        io.grpc.stub.StreamObserver<grpc.MedicationServiceOuterClass.EmptyMessage> responseObserver) {
+      asyncUnimplementedUnaryCall(getNotTakenMethod(), responseObserver);
+    }
+
     @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
       return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
           .addMethod(
@@ -102,6 +180,20 @@ public final class MedicationServiceGrpc {
                 grpc.MedicationServiceOuterClass.MedicationRequest,
                 grpc.MedicationServiceOuterClass.MedicationResponse>(
                   this, METHODID_GET_MEDICATION)))
+          .addMethod(
+            getTakenMethod(),
+            asyncUnaryCall(
+              new MethodHandlers<
+                grpc.MedicationServiceOuterClass.MedicationTaken,
+                grpc.MedicationServiceOuterClass.EmptyMessage>(
+                  this, METHODID_TAKEN)))
+          .addMethod(
+            getNotTakenMethod(),
+            asyncUnaryCall(
+              new MethodHandlers<
+                grpc.MedicationServiceOuterClass.MedicationNotTaken,
+                grpc.MedicationServiceOuterClass.EmptyMessage>(
+                  this, METHODID_NOT_TAKEN)))
           .build();
     }
   }
@@ -131,6 +223,22 @@ public final class MedicationServiceGrpc {
       asyncUnaryCall(
           getChannel().newCall(getGetMedicationMethod(), getCallOptions()), request, responseObserver);
     }
+
+    /**
+     */
+    public void taken(grpc.MedicationServiceOuterClass.MedicationTaken request,
+        io.grpc.stub.StreamObserver<grpc.MedicationServiceOuterClass.EmptyMessage> responseObserver) {
+      asyncUnaryCall(
+          getChannel().newCall(getTakenMethod(), getCallOptions()), request, responseObserver);
+    }
+
+    /**
+     */
+    public void notTaken(grpc.MedicationServiceOuterClass.MedicationNotTaken request,
+        io.grpc.stub.StreamObserver<grpc.MedicationServiceOuterClass.EmptyMessage> responseObserver) {
+      asyncUnaryCall(
+          getChannel().newCall(getNotTakenMethod(), getCallOptions()), request, responseObserver);
+    }
   }
 
   /**
@@ -156,6 +264,20 @@ public final class MedicationServiceGrpc {
     public grpc.MedicationServiceOuterClass.MedicationResponse getMedication(grpc.MedicationServiceOuterClass.MedicationRequest request) {
       return blockingUnaryCall(
           getChannel(), getGetMedicationMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public grpc.MedicationServiceOuterClass.EmptyMessage taken(grpc.MedicationServiceOuterClass.MedicationTaken request) {
+      return blockingUnaryCall(
+          getChannel(), getTakenMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public grpc.MedicationServiceOuterClass.EmptyMessage notTaken(grpc.MedicationServiceOuterClass.MedicationNotTaken request) {
+      return blockingUnaryCall(
+          getChannel(), getNotTakenMethod(), getCallOptions(), request);
     }
   }
 
@@ -184,9 +306,27 @@ public final class MedicationServiceGrpc {
       return futureUnaryCall(
           getChannel().newCall(getGetMedicationMethod(), getCallOptions()), request);
     }
+
+    /**
+     */
+    public com.google.common.util.concurrent.ListenableFuture<grpc.MedicationServiceOuterClass.EmptyMessage> taken(
+        grpc.MedicationServiceOuterClass.MedicationTaken request) {
+      return futureUnaryCall(
+          getChannel().newCall(getTakenMethod(), getCallOptions()), request);
+    }
+
+    /**
+     */
+    public com.google.common.util.concurrent.ListenableFuture<grpc.MedicationServiceOuterClass.EmptyMessage> notTaken(
+        grpc.MedicationServiceOuterClass.MedicationNotTaken request) {
+      return futureUnaryCall(
+          getChannel().newCall(getNotTakenMethod(), getCallOptions()), request);
+    }
   }
 
   private static final int METHODID_GET_MEDICATION = 0;
+  private static final int METHODID_TAKEN = 1;
+  private static final int METHODID_NOT_TAKEN = 2;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -208,6 +348,14 @@ public final class MedicationServiceGrpc {
         case METHODID_GET_MEDICATION:
           serviceImpl.getMedication((grpc.MedicationServiceOuterClass.MedicationRequest) request,
               (io.grpc.stub.StreamObserver<grpc.MedicationServiceOuterClass.MedicationResponse>) responseObserver);
+          break;
+        case METHODID_TAKEN:
+          serviceImpl.taken((grpc.MedicationServiceOuterClass.MedicationTaken) request,
+              (io.grpc.stub.StreamObserver<grpc.MedicationServiceOuterClass.EmptyMessage>) responseObserver);
+          break;
+        case METHODID_NOT_TAKEN:
+          serviceImpl.notTaken((grpc.MedicationServiceOuterClass.MedicationNotTaken) request,
+              (io.grpc.stub.StreamObserver<grpc.MedicationServiceOuterClass.EmptyMessage>) responseObserver);
           break;
         default:
           throw new AssertionError();
@@ -271,6 +419,8 @@ public final class MedicationServiceGrpc {
           serviceDescriptor = result = io.grpc.ServiceDescriptor.newBuilder(SERVICE_NAME)
               .setSchemaDescriptor(new MedicationServiceFileDescriptorSupplier())
               .addMethod(getGetMedicationMethod())
+              .addMethod(getTakenMethod())
+              .addMethod(getNotTakenMethod())
               .build();
         }
       }

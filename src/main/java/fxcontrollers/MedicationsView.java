@@ -67,10 +67,6 @@ public class MedicationsView
         {
             parseDailyInterval(medication);
         }
-
-        System.out.println(morningLabelList);
-        System.out.println(afternoonLabelList);
-        System.out.println(eveningLabelList);
     }
 
     private void parseDailyInterval(Medication medication)
@@ -113,6 +109,7 @@ public class MedicationsView
         {
             labelsBox.getChildren().remove(label);
             buttonsBox.getChildren().remove(button);
+            grpcClient.sendMedicationTaken(label.getText());
         });
         return button;
     }
@@ -136,16 +133,19 @@ public class MedicationsView
 
             if (areLocalTimesEqual(currentTime,afternoonStartTime))
             {
+                sendNotTakenMessages();
                 display(afternoonLabelList, afternoonButtonList);
             }
 
             if (areLocalTimesEqual(currentTime, eveningStartTime))
             {
+                sendNotTakenMessages();
                 display(eveningLabelList, eveningButtonList);
             }
 
             if (areLocalTimesEqual(currentTime, nightStartTime))
             {
+                sendNotTakenMessages();
                 display(new ArrayList<>(), new ArrayList<>());
             }
 
@@ -190,5 +190,13 @@ public class MedicationsView
         {
             display(new ArrayList<>(), new ArrayList<>());
         }
+    }
+
+    private void sendNotTakenMessages()
+    {
+        labelsBox.getChildren().forEach(node -> {
+            Label label = (Label) node;
+            grpcClient.sendMedicationNotTaken(label.getText());
+        });
     }
 }
