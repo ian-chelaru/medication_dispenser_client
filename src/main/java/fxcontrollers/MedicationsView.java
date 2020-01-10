@@ -19,7 +19,7 @@ import static grpc.MedicationServiceOuterClass.*;
 
 public class MedicationsView
 {
-    private static final LocalTime changeTime = LocalTime.of(10,34,0);
+    private static final LocalTime changeTime = LocalTime.of(0,0,0);
     private static final LocalTime morningStartTime = LocalTime.of(5,0,0);
     private static final LocalTime afternoonStartTime = LocalTime.of(12,0,0);
     private static final LocalTime eveningStartTime = LocalTime.of(17,0,0);
@@ -123,7 +123,7 @@ public class MedicationsView
             if (areLocalTimesEqual(currentTime,changeTime))
             {
                 downloadMedicationPlan();
-                System.out.println("Medication plan downloaded");
+                initDisplay();
             }
 
             if (areLocalTimesEqual(currentTime,morningStartTime))

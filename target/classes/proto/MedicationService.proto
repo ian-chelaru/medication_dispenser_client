@@ -15,4 +15,17 @@ message MedicationResponse {
 
 service MedicationService {
     rpc getMedication (MedicationRequest) returns (MedicationResponse);
+    rpc taken (MedicationTaken) returns (EmptyMessage);
+    rpc notTaken (MedicationNotTaken) returns (EmptyMessage);
+}
+
+message MedicationTaken {
+    string medicationName = 1;
+}
+
+message MedicationNotTaken {
+    string medicationName = 1;
+}
+
+message EmptyMessage {
 }
